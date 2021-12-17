@@ -1,9 +1,13 @@
 import React from "react";
+import { Redirect } from "react-router";
+import SigninContainer from "../containers/SigninContainer";
+import useToken from "../hooks/useToken";
 
 export default function Signin() {
-  return (
-    <div>
-      <h1>Signin</h1>
-    </div>
-  );
+  const token = useToken();
+
+  if (token !== null) {
+    return <Redirect to="/" />;
+  }
+  return <SigninContainer />;
 }
